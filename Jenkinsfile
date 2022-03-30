@@ -23,7 +23,7 @@ pipeline {
             steps {
               sshagent(['deploy-artifact']) {
                   
-                     sh 'scp target/WebAppCal-1.3.5.war centos@44.203.60.229:~/apache-tomcat-7.0.94/webapps/'
+                     sh 'scp ssh -o StrictHostKeyChecking=no target/WebAppCal-1.3.5.war centos@44.203.60.229:~/apache-tomcat-7.0.94/webapps/'
               
                     }
             }
