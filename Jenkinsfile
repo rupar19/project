@@ -22,7 +22,7 @@ pipeline {
             steps {
               sshagent(['deploy-artifact']) {
  
- scp /target/WebAppCal-1.3.5.war centos/apache-tomcat-7.0.94/webapp
+ scp /target/WebAppCal-1.3.5.war centos/apache-tomcat-7.0.94/webapps
               
                 
 }
