@@ -1,4 +1,4 @@
-ipeline {
+pipeline {
     agent any
 
     stages {
@@ -23,7 +23,8 @@ ipeline {
               sshagent(['deploy-artifact']) {
  
  scp webapp/target/WebAppCal-1.3.5.war centos/apache-tomcat-7.0.94/webapp
-}            }
+}
+}
         }
 
     }
