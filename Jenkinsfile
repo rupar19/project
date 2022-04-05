@@ -2,7 +2,7 @@ pipeline {
 environment {
 registry = "rupar19/calculator"
 registryCredential = 'dockerhub_id'
-dockerImage = 'calc'
+dockerImage = ''
 }
 agent any
 stages {
