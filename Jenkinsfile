@@ -50,6 +50,7 @@ stage('Docker Build and Tag') {
  
             }
         }
+     
 
     }
  }
