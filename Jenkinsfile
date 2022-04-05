@@ -34,7 +34,7 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub_id", url: "" ]) {
+        withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
           sh  'docker push rupar19/calcapp:latest'
         //  sh  'docker push rupar19/calcapp:$BUILD_NUMBER' 
         }
