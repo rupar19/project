@@ -56,7 +56,7 @@ stage('Docker Build and Tag') {
                 // sh "docker -H centos@172.31.85.230 run -d -p 8003:8080 rupar19/calcapp"
                 //sh " docker run -dt --name calc -p"
  
-            }
-        }//
+            //}
+        }
     }
  }
