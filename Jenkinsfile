@@ -1,33 +1,36 @@
 pipeline {
-    agent any
-
-    stages {
-        
-        stage('Validate') {
-            steps {
-                sh 'mvn validate'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-    
-        stage('Deploy') {
-            steps {
-              sshagent(['deploy-artifact']) {
-                  
-                     sh 'scp -o StrictHostKeyChecking=no target/WebAppCal-1.3.5.war centos@172.31.88.242:~/apache-tomcat-7.0.94/webapps/'
-              
-                    }
-            }
-        }
-
-    }
+environment {
+registry = "rupar19/calculator"
+registryCredential = 'dockerhub_id'
+dockerImage = ''
+}
+agent any
+stages {
+stage('Cloning our Git') {
+steps {
+git 'https://github.com/rupar19/project.git'
+}
+}
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+stage('Deploy our image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
+}
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
+}
 }
