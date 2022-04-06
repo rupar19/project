@@ -24,8 +24,8 @@ pipeline {
 stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t calcapp:latest .' 
-                sh 'docker tag calcapp rupar19/calcapp:latest'
+                sh 'docker build -t calc:latest .' 
+                sh 'docker tag calcapp rupar19/calc:latest'
                 //sh 'docker tag scalcapp rupar19/calcapp:$BUILD_NUMBER'
                
           }
@@ -35,8 +35,8 @@ stage('Docker Build and Tag') {
           
             steps {
         withDockerRegistry([ credentialsId: "dockerhub_id", url: "" ]) {
-          sh  'docker push rupar19/calcapp:latest'
-        //  sh  'docker push rupar19/calcapp:$BUILD_NUMBER' 
+          sh  'docker push rupar19/calc:latest'
+        //  sh  'docker push rupar19/calc:$BUILD_NUMBER' 
         }
                   
           }
@@ -46,8 +46,8 @@ stage('Docker Build and Tag') {
              
             steps 
    {
-               // sh "docker run -d -p 8003:8080 rupar19/calcapp"
-       sh "docker run -dt -p 9090:8080 rupar19/calcapp"
+               // sh "docker run -d -p 8003:8080 rupar19/calc"
+       sh "docker run -dt -p 9090:8080 rupar19/calc"
  
             }
         }
