@@ -48,7 +48,7 @@ stage('Docker Build and Tag') {
             steps 
    {
                
-       sh "docker run -dt -p 6666:8080 rupar19/calc"
+       sh "docker run -dt -p 6001:8080 rupar19/calc"
  
             }
         }
