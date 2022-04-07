@@ -45,8 +45,7 @@ stage('Docker Build and Tag') {
      
       stage('Run Docker container on Jenkins Agent') {
              
-            steps 
-   {
+          steps {
                
        sh "docker run -dt -p 6001:8080 rupar19/calc"
  
