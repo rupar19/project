@@ -54,7 +54,7 @@ stage('Docker Build and Tag') {
      stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.85.230 run -dt -p 5757:8080 rupar19/calc"
+                sh "docker -H ssh://jenkins@ 172.31.88.242n -dt -p 5757:8080 rupar19/calc"
  
             }
         }
