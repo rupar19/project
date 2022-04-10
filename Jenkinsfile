@@ -53,9 +53,9 @@ stage('Docker Build and Tag') {
         }
      stage('Run Docker container on remote hosts') {
          steps{
-             def dockerRun = 'docker run -p 5999:8080 -d --name my-app rupar19/calc'
-                          
+                               
                 sshagent(['dev-server']) {
+                    def dockerRun = 'docker run -p 5999:8080 -d --name my-app rupar19/calc'
                     sh "ssh -o StrictHostKeyChecking=no centos@172.31.88.242 ${dockerRun}"
                 }
 
