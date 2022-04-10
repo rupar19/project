@@ -47,14 +47,18 @@ stage('Docker Build and Tag') {
              
           steps {
                
-       sh "docker run -dt -p 5993:8080 rupar19/calc"
+       sh "docker run -dt -p 5999:8080 rupar19/calc"
  
             }
         }
      stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.85.230 run -d -p 5993:8080 rupar19/calc"
+                def dockerRun = 'docker run -p 5999:8080 -d --name my-app rupar19/calc'
+                sshagent(['dev-server']) {
+                    sh "ssh -o StrictHostKeyChecking=no centos@172.31.88.242 ${dockerRun}"
+}
+               // sh "docker -H ssh://jenkins@172.31.85.230 run -d -p 5993:8080 rupar19/calc"
  
             }
         }
