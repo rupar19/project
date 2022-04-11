@@ -55,7 +55,7 @@ stage('Docker Build and Tag') {
          steps{
                        
                 sshagent(['dev-server']) {
-                                       sh "ssh -o StrictHostKeyChecking=no centos@172.31.88.242 docker run -p 5989:8080 -d --name my-app rupar19/calc"
+                                       sh "ssh -o StrictHostKeyChecking=no centos@172.31.88.242 docker run -p 5989:8080 -d --name my-calcapp rupar19/calc"
                 }
 
                // sh "docker -H ssh://jenkins@172.31.85.230 run -d -p 5993:8080 rupar19/calc"
